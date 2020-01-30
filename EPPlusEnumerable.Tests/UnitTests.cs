@@ -31,7 +31,7 @@
             for (int i = 1; i < package.Workbook.Worksheets.Count; i++)
             {
                 Assert.True(package.Workbook.Worksheets[i].Dimension.End.Row == groupedData[i - 1].Count() + 1);
-                Assert.True(package.Workbook.Worksheets[i].Name == groupedData[i - 1].Key.ToString("MMMM yyyy"));
+                Assert.True(package.Workbook.Worksheets[i].Name == groupedData[i - 1].Key.ToString("MMMM_yyyy"));
                 Assert.True(ValidWorksheet(package.Workbook.Worksheets[i], groupedData[i - 1].ToList()));
             }
             
@@ -108,7 +108,7 @@
         [SpreadsheetCellStyle(horizontalAlignment: ExcelHorizontalAlignment.Center, wrapText: true)]
         public string Email { get; set; }
 
-        [SpreadsheetTabName(FormatString = "{0:MMMM yyyy}")]
+        [SpreadsheetTabName(FormatString = "{0:MMMM_yyyy}")]
         public DateTime DateTime { get; set; }
     }
 }
